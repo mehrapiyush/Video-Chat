@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="modules/mediasoupclient.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/727eba93ca.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/EventEmitter/5.2.8/EventEmitter.min.js"></script>
+    <script src="RoomClient.js"></script>
+</head>
+<style>
+</style>
+<body>
+    <div id='videoMedia' class='hidden'>
+        <div id="remoteVideos" class="container"></div>
+        <div id="remoteAudios"></div>
+        <div id = "userList" class = "user-list"></div>
+    </div>
+    <div class= "container-chat">
+        <div id="mariochat" class="chat">
+            <div id="chat-window">
+                <div id="output"></div>
+                <div id="feedback"></div>
+            </div>
+            <input class = "input-op" type="text" id="message" placeholder="Message"/>
+            <button class = "btn-chat" id="send">Send</button>  
+        </div>
+    </div>
+    <div id="localMedia" class="local-vid"></div>
+    <div id="control" class="hidden">
+        <br />
+        <div class="btn-video">
+            <button id='exitButton' class= "exit-btn" onclick="rc.exit()">Exit</button>
+            <div id='startAudioButton'  onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)"><i class="fas fa-microphone"></i></div>
+            <div id='stopAudioButton'  onclick="rc.closeProducer(RoomClient.mediaType.audio)"><i class="fas fa-microphone-slash"></i></div>
+            <div id='startVideoButton'  onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)"><i class="fas fa-video"></i></div>
+            <div id='stopVideoButton'  onclick="rc.closeProducer(RoomClient.mediaType.video)"><i class="fas fa-video-slash"></i>
+                </div>
+            <div id='startScreenButton' onclick="rc.produce(RoomClient.mediaType.screen)"><i class="fas fa-upload"></i></div>
+            <div id='stopScreenButton' onclick="rc.closeProducer(RoomClient.mediaType.screen)"><i class="fas fa-upload"></i></div>
+        </div>
+        <br />
+        <br/>
+        <select style="display:none" id="audioSelect">
+        </select>
+        <br/>
+        <select id="videoSelect"  style="display:none" >
+        </select>
+    </div>  
+</body>
+
+<footer>
+    <script type="text/javascript" src="ChatClient.js"></script>
+    <script src="room.js"></script>
+</footer>
+
+</html>
